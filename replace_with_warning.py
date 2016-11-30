@@ -1,7 +1,7 @@
 import warnings
 
 
-def replace_with_warning(series_in,dico,ignore_case=True):
+def replace_with_warning(series_in,dico,ignore_case=True,sep="; "):
         
     # preprocessing    
     series_to_use = series_in
@@ -18,6 +18,6 @@ def replace_with_warning(series_in,dico,ignore_case=True):
     are_missing = ~out.isin(dico_to_use)
     
     if are_missing.sum()>0:
-        warnings.warn("These entries were not found in the dictionary: "+",".join(series_in[are_missing].unique()))
+        warnings.warn("These entries were not found in the dictionary: "+sep.join(series_in[are_missing].unique()))
 
     return out
